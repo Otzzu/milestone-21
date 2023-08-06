@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 
 import AddReviewModal from '@/components/add-review-modal'
 import AuthModal from '@/components/auth-modal'
+import FormModal from '@/components/form-modal'
+import RoadMapModal from '@/components/roadmap-modal'
 
 const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false)
@@ -16,8 +18,10 @@ const ModalProvider = () => {
 
   return (
     <>
-        <AuthModal />
-        <AddReviewModal />
+      <AuthModal />
+      <AddReviewModal />
+      <FormModal />
+      <RoadMapModal />
     </>
   )
 }

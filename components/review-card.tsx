@@ -11,16 +11,17 @@ import { useState } from "react"
 
 interface ReviewCardProps {
     data: ReviewWithUserProps,
-    handleDelete: () => void
+    handleDelete: () => void,
+    handleTag: (tag: string) => void,
 }
 
 const ReviewCard: React.FC<ReviewCardProps> = ({
     data, 
-    handleDelete
+    handleDelete,
+    handleTag
 }) => {
   const user = useUser()!
   const [open, setOpen] = useState(false)
-
 
   const onChange = (open: boolean) => {
     if (!open) {
@@ -49,7 +50,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
             <div className="flex items-center justify-center">
                 <Image alt="profile" src={data.user_id.avatar_url || profile} className="object-contain rounded-full" width={40} height={40}/>
             </div>
-            <h3 className="font-roboto text-black font-[500] text-base p-0.">
+            <h3 className="font-roboto text-black font-[500] text-base">
                 {data.user_id.full_name || data.user_id.email}
             </h3>
             {user.id === data.user_id.id ? (
@@ -71,7 +72,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
         <div className="flex flex-col space-y-4">
             <div className="flex items-center space-x-2">
                 {data.tags?.map((tag, index) => (
-                    <Badge key={tag} variant={index % 2 === 0 ? "default" : "secondary"}>
+                    <Badge key={tag} variant={index % 2 === 0 ? "default" : "secondary"} onClick={() => handleTag(tag)} className="cursor-pointer">
                         {tag}
                     </Badge>
                 ))}

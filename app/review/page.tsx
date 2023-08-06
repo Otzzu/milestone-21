@@ -17,7 +17,7 @@ const ReviewPage = () => {
   const supabase = useSupabaseClient()
   const { open: openCreate } = useCreateReviewModal()
   const [search, setSearch] = useState<string>("")
-  const [loading, setLoading] = useState<boolean>(true)
+  const [loading, setLoading] = useState<boolean>(false)
   
   const handleDelete = async (review: ReviewWithUserProps) => {
     const { error } = await supabase
@@ -34,26 +34,30 @@ const ReviewPage = () => {
     }
   }
 
-  const handleSearch = async () => {
+  const handleSearch = async (tag?: string) => {
     setLoading(true)
     const { data, error } = await supabase
       .from("review")
       .select("*, user_id!inner(*)")
-      .or(`content.ilike.%${search}%,tags.cs.{"${search}"}`)
+      .or(`content.ilike.%${tag || search}%,tags.cs.{"${tag || search}"}`)
     
     const { data: data1, error: error1 } = await supabase
       .from("review")
       .select("*, user_id!inner(*)")
-      .or(`email.ilike.%${search}%,full_name.ilike.%${search}%`, { foreignTable: "user_id" })
+      .or(`email.ilike.%${tag || search}%,full_name.ilike.%${tag || search}%`, { foreignTable: "user_id" })
 
     if (error || error1) {
       // console.log(error || error1)
       toast.error("Error fetching the data")
     } else {
-      console.log(Array.from(new Set(data.concat(data1).map((item) => JSON.stringify(item)))).map((item) => JSON.parse(item)))
       setReviews(Array.from(new Set(data.concat(data1).map((item) => JSON.stringify(item)))).map((item) => JSON.parse(item)))
     }
     setLoading(false)
+  }
+
+  const handleTag = async (tag: string) => {
+    setSearch(tag)
+    handleSearch(tag)
   }
   
   useEffect(() => {
@@ -84,9 +88,9 @@ const ReviewPage = () => {
 
                 <div className="relative w-[85%] mx-auto">
                     <Input className="rounded-full border-[#6F6F6F] py-6 font-roboto text-[18px] px-8 placeholder:text-gray-400" placeholder="search review or tags" value={search} onChange={(e) => setSearch(e.target.value)}/>
-                    <div className="cursor-pointer absolute rounded-full p-2 bg-[#111B47] right-2 top-[7px]" onClick={handleSearch}>
+                    <div className="cursor-pointer absolute rounded-full p-2 bg-[#111B47] right-2 top-[7px]" onClick={() => handleSearch()}>
                         {loading ? (
-                          <MoonLoader color="white" size={20} />
+                          <MoonLoader color="white" size={15} />
                         ): (
                           <Search className="h-5 w-5 text-white"/>
                         )}
@@ -94,7 +98,7 @@ const ReviewPage = () => {
                 </div>
             </div>
         </div>
-        <ReviewBox data={reviews} handleDelete={handleDelete} />
+        <ReviewBox data={reviews} handleDelete={handleDelete} handleTag={handleTag}/>
         
     </div>
   )
