@@ -43,6 +43,7 @@ const AuthModal = () => {
           }
         }}
         view={view}
+        redirectTo="https://milestone-21.vercel.app"
       />
     </Modal>
   )
