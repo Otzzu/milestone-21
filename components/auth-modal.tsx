@@ -43,6 +43,7 @@ const AuthModal = () => {
           }
         }}
         view={view}
+        redirectTo={window.location.origin}
       />
     </Modal>
   )
