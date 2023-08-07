@@ -1,3 +1,5 @@
+"use client"
+
 import Hero from "@/components/hero";
 import Review from "@/components/review";
 import Step from "@/components/step";
