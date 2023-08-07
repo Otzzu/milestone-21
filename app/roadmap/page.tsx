@@ -10,7 +10,7 @@ import { Database } from "@/types_db"
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react"
 import { useEffect, useState } from "react"
 
-const roadMapPage = () => {
+const RoadMapPage = () => {
   const { onOpen, open } = useFormModal()
   const { onOpenSignin } = useAuthModal()
   const supabase = useSupabaseClient()
@@ -62,4 +62,4 @@ const roadMapPage = () => {
   )
 }
 
-export default roadMapPage
+export default RoadMapPage

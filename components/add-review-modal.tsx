@@ -90,7 +90,7 @@ const AddReviewModal = () => {
                         <FormControl>
                             <Input placeholder="write a tag here" {...field}/>
                         </FormControl>
-                        <FormDescription>Pisahkan tag satu dengan yang lain menggunakan spasi (ex: "OSKM CDT")</FormDescription>
+                        <FormDescription>Pisahkan tag satu dengan yang lain menggunakan spasi{' (ex: "OSKM CDT")'}</FormDescription>
                         <FormMessage />
                     </FormItem>
                   )}

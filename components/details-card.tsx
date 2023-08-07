@@ -27,7 +27,7 @@ const DetailsCard = ({
             {detail}
         </h2>
         <p className="font-poppins text-sm font-normal text-[#425466]"> 
-            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem
+            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem
         </p>
         <div className="flex items-center justify-center w-full">
             <Button type="reset"  className="w-full rounded-md" onClick={handleButton}>

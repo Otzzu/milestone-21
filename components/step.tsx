@@ -45,7 +45,7 @@ const Step = () => {
           </div>
           <div className="flex flex-col gap-4 flex-1">
             {stepData.map((data) => (
-              <StepBox number={data.number} text={data.text}/>
+              <StepBox key={data.number} number={data.number} text={data.text}/>
             ))}
           </div>
         </div>
