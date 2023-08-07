@@ -12,11 +12,15 @@ import { useEffect, useState } from "react"
 import toast from "react-hot-toast"
 import { MoonLoader } from "react-spinners"
 
-const ReviewPage = () => {
+interface ReviewPageProps {
+  searchParams?: { search?: string }
+}
+
+const ReviewPage: React.FC<ReviewPageProps> = ({ searchParams }) => {
   const [reviews, setReviews] = useState<ReviewWithUserProps[]>([])
   const supabase = useSupabaseClient()
   const { open: openCreate } = useCreateReviewModal()
-  const [search, setSearch] = useState<string>("")
+  const [search, setSearch] = useState<string>(searchParams?.search || "")
   const [loading, setLoading] = useState<boolean>(false)
   
   const handleDelete = async (review: ReviewWithUserProps) => {
@@ -59,6 +63,12 @@ const ReviewPage = () => {
     setSearch(tag)
     handleSearch(tag)
   }
+
+  useEffect(() => {
+    if (search) {
+      handleSearch(search)
+    }
+  }, [])
   
   useEffect(() => {
     const fetctReview = async () => {

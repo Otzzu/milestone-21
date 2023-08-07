@@ -8,4 +8,11 @@ export interface ReviewWithUserProps {
     user_id: Database["public"]["Tables"]["users"]["Row"]
 }
 
+export interface RoadmapModalData {
+    semester: string,
+    tahun: string,
+    desc: string,
+    details: string[],
+}
+
 

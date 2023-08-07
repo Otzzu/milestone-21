@@ -10,13 +10,15 @@ import * as ToggleGroup from "@radix-ui/react-toggle-group"
 import { Button } from "@/components/ui/button"
 import useFormModal from "@/hooks/use-form-modal"
 import { cn } from "@/lib/utils"
+import useRoadmapModal from "@/hooks/use-roadmap-modal"
+import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react"
+import toast from "react-hot-toast"
 
-const formSchema = z.object({
+export const formSchema = z.object({
     lulusTigaSetengah: z.enum(["tidak setuju", "kurang setuju", "netral", "setuju", "sangat setuju"]),
     bisaMembagiWaktu: z.enum(["tidak setuju", "kurang setuju", "netral", "setuju", "sangat setuju"]),
     sukaSosialisasi: z.enum(["tidak setuju", "kurang setuju", "netral", "setuju", "sangat setuju"]),
     sukaOlahraga: z.enum(["tidak setuju", "kurang setuju", "netral", "setuju", "sangat setuju"]),
-    
 })
 
 const FormModal = () => {
@@ -31,6 +33,8 @@ const FormModal = () => {
   })
 
   const { open, onClose } = useFormModal()
+  const supabase = useSupabaseClient()
+  const user = useUser()
 
   const question = [{
     name: "lulusTigaSetengah",
@@ -63,8 +67,21 @@ const FormModal = () => {
     value: "sangat setuju"
   }]
 
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
-    console.log(data)
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    // console.log(data)
+    const { error, data: rmData } = await supabase
+      .from('users')
+      .update({ roadmap_data: JSON.stringify(data) })
+      .eq('id', user?.id)
+      .select()
+
+    if (error) {
+      console.log(error)
+      toast.error("Gagal meng-generate Road Map")
+    } else {
+      // console.log(rmData)
+    }
+
     onClose()
     form.reset()
   }
@@ -102,9 +119,9 @@ const FormModal = () => {
               )}
             />                
           ))}
-          <div className="w-full flex items-center justify-end mt-6">
+          <div className="w-full flex items-center justify-end mt-10">
             <Button type="submit">
-              Submit
+              Generate Road Map
             </Button>
           </div>
         </form>

@@ -95,7 +95,7 @@ const AddReviewModal = () => {
                     </FormItem>
                   )}
                 />
-                <div className="flex items-center justify-end w-fu;;">
+                <div className="flex items-center justify-end w-full">
                     <Button type="submit">Create</Button>
                 </div>
             </form>

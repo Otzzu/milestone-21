@@ -1,16 +1,26 @@
 "use client"
 
 import { Auth } from "@supabase/auth-ui-react"
-import { useSupabaseClient } from "@supabase/auth-helpers-react"
+import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react"
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import useAuthModal from "@/hooks/use-auth-modal"
-import Modal from "./ui/modal"
+import Modal from "@/components/ui/modal"
+import { useEffect } from "react"
+import { useRouter } from "next/navigation"
 
 const AuthModal = () => {
   const supabaseClient = useSupabaseClient()
   const { open, view, onClose }  = useAuthModal()
+  const user = useUser()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (user) {
+      onClose()
+      router.refresh()
+    }
+  }, [user])
 
   const onChange = (open: boolean) => {
     if (!open) onClose()

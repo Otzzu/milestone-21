@@ -26,7 +26,7 @@ const Step = () => {
     text: "Masuk ke halaman menu Road Map"
   }, {
     number: "02",
-    text: "Edit data diri dan jawab semua pertanyaan yang ada"
+    text: "Isi survey dan jawab semua pertanyaan yang ada"
   }, {
     number: "03",
     text: "Tekan tombol generate dan tunggu proses pembuatan Road Map selesai"

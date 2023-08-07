@@ -13,6 +13,7 @@ import useAuthModal from "@/hooks/use-auth-modal"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import useCreateReviewModal from "@/hooks/use-create-review-modal"
+import toast from "react-hot-toast"
 
 const Navbar = () => {
   const pathName = usePathname()
@@ -24,7 +25,18 @@ const Navbar = () => {
   // console.log(user)
 
   const logout = async () => {
-    await supabase.auth.signOut()
+    const { error } = await supabase
+      .from("users")
+      .update({ roadmap_data: null })
+      .eq("id", user?.id)
+
+    if (error) {
+      console.log(error)
+      toast.error("Logout failed")
+    } else {
+      await supabase.auth.signOut()
+    }
+    
   }
 
   const links = [{

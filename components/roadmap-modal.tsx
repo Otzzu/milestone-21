@@ -1,24 +1,41 @@
 import Modal from '@/components/ui/modal'
 import { Separator } from './ui/separator'
+import DetailsCard from './details-card'
+import { ScrollArea } from './ui/scroll-area'
+import useRoadmapModal from '@/hooks/use-roadmap-modal'
 
 const RoadMapModal = () => {
+  const { open, onClose, data } = useRoadmapModal()
+
+  const onChange = (open: boolean) => {
+    if (!open) {
+      onClose()
+    }
+  }
+
   return ( 
-    <Modal title='SEMESTER 1' desc='Rekomendasi kegiatan untuk semester 1' onChange={() => {}} open className='min-w-[85%] min-h-[85%]'>
-        <div className='w-full h-fit'>
+    <Modal title={`Tahun ${data.tahun} semester ${data.semester}`} desc={`Rekomendasi kegiatan untuk tahun ${data.tahun} semester ${data.semester}`} onChange={onChange} open={open} className='max-w-[85%] max-h-[85%] pr-0'>
+        <ScrollArea className='w-full h-[500px] pr-6'>
+        <div className='w-full h-fit mb-2'>
             <h2 className='font-roboto text-black font-bold text-base'>
                 Rekomendasi
             </h2>
             <p className='font-poppins text-sm font-normal text-[#425466]'>
-              It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+              {data.desc}
             </p>
         </div>
         <Separator />
-        <div className='flex flex-col space-x-4'>
+        <div className='flex flex-col space-y-4 mt-2'>
             <h2 className='font-roboto text-black font-bold text-base'>
                 Penjelasan Kegiatan
             </h2>
-
+            <div className='columns-2 space-y-4 gap-4 w-full'>
+                {data.details.map((detail) => (
+                  <DetailsCard key={detail} detail={detail}/>
+                ))}
+            </div>
         </div>
+        </ScrollArea>
     </Modal>
   )
 }
