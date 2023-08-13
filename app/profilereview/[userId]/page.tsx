@@ -36,7 +36,7 @@ const ProfileReviewPage = async ({
 
 
   return (
-    <div className='flex flex-col px-24 py-12'>
+    <div className='flex flex-col px-7 md:px-10 lg:px-24 py-12'>
       <ProfileHeaderAnimation title={`${user?.full_name || user?.email} Profile`} desc=""/>
       <Separator className='my-4'/>
       <ProfileForm user={user} reload={true}/>
