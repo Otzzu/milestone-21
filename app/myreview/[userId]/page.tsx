@@ -52,7 +52,7 @@ const MyReviewPage = ({
 
   
   return (
-    <div className='px-24 py-12'>
+    <div className='px-7 md:px-10 lg:px-24 py-12'>
       <ReviewHeaderAnimation title='My Review' desc='Review-review yang anda buat'/>
       <ReviewBox data={reviews} handleDelete={handleDelete}/>
     </div>

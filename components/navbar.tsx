@@ -72,7 +72,14 @@ const Navbar = () => {
             <div className="cursor-pointe" onClick={() => router.push("/")}>
                 <Image alt="logo" src={logo} />
             </div>
-            <div className="flex md:hidden">
+            <div className="flex space-x-3 md:hidden">
+                {pathName === "/review" ? (
+                  <Button className="text-xs sm:text-sm" variant="default" onClick={() => onOpen()}>
+                    Add Review
+                  </Button>
+                ) : (
+                  <></>
+                )}
               <Sheet open={openSide} onOpenChange={setOpenSide}>
                 <SheetTrigger>
                   <Menu className="w-4 h-4"/>

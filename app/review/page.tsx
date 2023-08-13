@@ -108,17 +108,24 @@ const ReviewPage: React.FC<ReviewPageProps> = ({ searchParams }) => {
                 <Header textAlign="center" title="Review" desc="Berisi review-review kating mengenai berbagai macam kegiatan di ITB, baik kepanitian, unit, dan lain sebagainya" />
               </motion.div>
               <motion.div 
-                className="relative w-[85%] mx-auto"
+                className="relative w-full sm:w-[90%] md:w-[85%] mr-auto md:mx-auto"
                 initial={{ opacity: 0, scale: 0.6 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.7, type: "spring", duration: 1.5 }}
               >
-                  <Input className="rounded-full border-[#6F6F6F] py-6 font-roboto text-[18px] px-8 placeholder:text-gray-400" placeholder="search review or tags" value={search} onChange={(e) => setSearch(e.target.value)}/>
-                  <div className="cursor-pointer absolute rounded-full p-2 bg-[#111B47] right-2 top-[7px]" onClick={() => handleSearch()}>
+                  <Input className="rounded-full border-[#6F6F6F] py-4 md:py-6 font-roboto text-base md:text-[18px] px-4 md:px-8 placeholder:text-gray-400" placeholder="search review or tags" value={search} onChange={(e) => setSearch(e.target.value)}/>
+                  <div className="cursor-pointer absolute rounded-full p-1 md:p-2 bg-[#111B47] right-1.5 md:right-2 top-[6px] md:top-[7px]" onClick={() => handleSearch()}>
                       {loading ? (
-                        <MoonLoader color="white" size={15} />
+                        <>
+                          <div className="hidden md:block">
+                            <MoonLoader color="white" size={15} />
+                          </div>
+                          <div className="block md:hidden">
+                            <MoonLoader  color="white" size={11} />
+                          </div>
+                        </>
                       ): (
-                        <Search className="h-5 w-5 text-white"/>
+                        <Search className="h-3.5 w-3.5 md:h-5 md:w-5 text-white"/>
                       )}
                   </div>
               </motion.div>

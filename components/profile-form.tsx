@@ -184,14 +184,14 @@ const ProfileForm = ({
   }
 
   return (
-    <div className="flex">
+    <div className="flex flex-col sm:flex-row">
       <motion.div 
-        className="justify-center items-center flex mr-16"
+        className="justify-center items-center flex mb-10 sm:mr-16"
         initial={{ opacity: 0, translateX: "-80%" }}
         animate={{ opacity: 1, translateX: 0 }}
         transition={{ delay: 0.8, type: "spring", duration: 1.5 }}
       >
-        <Avatar className="w-[300px] h-[300px]">
+        <Avatar className="w-[250px] h-[250px] md:w-[300px] md:h-[300px]">
           <AvatarImage src={user.avatar_url ? user.avatar_url : "/profile.jpg"} alt="profile"/>
           <AvatarFallback>{user.full_name?.slice(0, 2).toUpperCase()}</AvatarFallback>
         </Avatar>

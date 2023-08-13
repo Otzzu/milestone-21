@@ -75,7 +75,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
     <AnimatePresence>
     {mounted && (
     <motion.div 
-        className="flex-1 break-inside-avoid p-6 flex flex-col bg-[#D3C8FF] bg-opacity-[0.35] shadow-special rounded-xl space-y-4 h-fit min-w-[300px]"
+        className="flex-1 break-inside-avoid p-5 md:p-6 flex flex-col bg-[#D3C8FF] bg-opacity-[0.35] shadow-special rounded-xl space-y-4 h-fit min-w-[300px]"
         initial={{ opacity: 0, scale: 0.6 }}
         whileInView={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.6 }}
@@ -87,15 +87,15 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
             </div>
             {data.user_id.faculty ? (
                 <div className="flex flex-col">
-                    <h3 className="font-roboto text-black font-[500] text-base cursor-pointer" onClick={handleProfileClick}>
+                    <h3 className="font-roboto text-black font-[500] text-[15px] md:text-base cursor-pointer" onClick={handleProfileClick}>
                         {data.user_id.full_name || data.user_id.email}
                     </h3>
-                    <p className="font-roboto text-xs text-[#78858F] cursor-pointer" onClick={handleProfileClick}>
+                    <p className="font-roboto text-[11px] md:text-xs text-[#78858F] cursor-pointer" onClick={handleProfileClick}>
                         {`${data.user_id.faculty} ${data.user_id.major ? "- " + data.user_id.major : ""}`}
                     </p>
                 </div>
             ):(
-                <h3 className="font-roboto text-black font-[500] text-base cursor-pointer" onClick={handleProfileClick}>
+                <h3 className="font-roboto text-black font-[500] text-[15px] md:text-base cursor-pointer" onClick={handleProfileClick}>
                     {data.user_id.full_name || data.user_id.email}
                 </h3>
             )}
@@ -107,7 +107,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
                         <MoreVertical className="h-4 w-4" />
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end" className="min-w-fit">
-                        <DropdownMenuItem className="text-xs" onClick={() => {setOpen(true)}}>
+                        <DropdownMenuItem className="text-base md:text-xs" onClick={() => {setOpen(true)}}>
                             Delete
                         </DropdownMenuItem>
                       </DropdownMenuContent>
@@ -124,7 +124,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
                 ))}
             </div>
 
-            <p className="font-poppins text-sm font-normal text-[#425466]">
+            <p className="font-poppins text-[13px] md:text-sm font-normal text-[#425466]">
                 {data.content}
             </p>
         </div>
