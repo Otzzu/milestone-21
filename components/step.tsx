@@ -58,6 +58,7 @@ const Step = () => {
                 whileInView={{ opacity: 1, translateX: 0 }}
                 transition={{ duration: 2, type: "spring", delay: ((index / 10) * 1.3)}}
                 viewport={{ once: true }}
+                key={data.number}
               >
                 <StepBox key={data.number} number={data.number} text={data.text}/>
               </motion.div>

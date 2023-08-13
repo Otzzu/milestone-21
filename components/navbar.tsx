@@ -95,7 +95,7 @@ const Navbar = () => {
                   <div className="flex flex-col h-full">
                     <div className="flex flex-col space-y-3">
                       {links.map((link) => (
-                        <div onClick={() => setOpenSide(false)}>
+                        <div key={link.label} onClick={() => setOpenSide(false)}>
                           <Link className={cn("text-[13px] sm:text-base hover:text-[#111B47] font-roboto", link.active ? "text-[#111B47]" : "text-[#929ECC]")} key={link.label} href={link.href}>
                             {link.label}
                           </Link>
