@@ -93,7 +93,7 @@ const FormModal = () => {
   return (
     <Modal open={open} onChange={onChange} title="Rekomendasi" desc="Jawab pertanyaan berikut dengan sebaik-baiknya">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col space-y-2">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col space-y-4">
           {question.map((q) => (
             <FormField 
             key={q.name}
@@ -101,13 +101,13 @@ const FormModal = () => {
             name={q.name as any}
             render={({ field }) => (
               <FormItem>
-                  <FormLabel>{q.label}</FormLabel>
+                  <FormLabel className="text-xs md:text-sm">{q.label}</FormLabel>
                     <FormControl>
-                      <ToggleGroup.Root type="single" value={field.value} defaultValue="netral" onValueChange={field.onChange} className="flex items-center justify-center space-x-5 rounded-full bg-[#111b47] bg-opacity-10 p-2 w-full">
+                      <ToggleGroup.Root type="single" value={field.value} defaultValue="netral" onValueChange={field.onChange} className="flex items-center justify-between rounded-full bg-[#111b47] bg-opacity-10 p-1 md:p-2 w-full">
                           {answer.map((item) => (
                             <FormItem key={item.value}>
                               <FormControl>
-                                <ToggleGroup.Item value={item.value} className={cn("text-sm flex-1 py-2 px-[10px] rounded-full", field.value === item.value ? "bg-[#111b47] text-white" : "" )}>
+                                <ToggleGroup.Item value={item.value} className={cn("text-xs md:text-sm flex-1 py-1 sm:py-1.5 md:py-2 px-[7px] md:px-[10px] rounded-full", field.value === item.value ? "bg-[#111b47] text-white" : "" )}>
                                       {item.label}
                                 </ToggleGroup.Item>
                               </FormControl>
@@ -119,8 +119,8 @@ const FormModal = () => {
               )}
             />                
           ))}
-          <div className="w-full flex items-center justify-end mt-10">
-            <Button type="submit">
+          <div className="w-full flex items-center justify-end">
+            <Button type="submit" className="text-xs md:text-sm">
               Generate Road Map
             </Button>
           </div>

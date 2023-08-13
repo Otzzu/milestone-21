@@ -6,6 +6,7 @@ import Navbar from '@/components/navbar'
 import SupabaseProvider from '@/providers/supabase-provider'
 import ToasterProvider from '@/providers/toaster-provider'
 import ModalProvider from '@/providers/modal-provider'
+import { ScrollArea } from '@/components/ui/scroll-area'
 
 export const metadata: Metadata = {
   title: 'RoadMap',
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <ScrollArea className='h-screen w-screen z-50'>
         <SupabaseProvider>
           <ToasterProvider />
           <ModalProvider />
@@ -28,6 +30,7 @@ export default function RootLayout({
             {children}
           </div>
         </SupabaseProvider>
+        </ScrollArea>
       </body>
     </html>
   )

@@ -39,7 +39,7 @@ const AddReviewModal = () => {
     } = {
       user_id: user?.id,
       content: data.content,
-      tags: data.tags.split(" ")
+      tags: data.tags.toLowerCase().split(" ")
     }
 
     const { error } = await supabase

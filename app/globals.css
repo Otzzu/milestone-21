@@ -76,3 +76,13 @@
     @apply bg-background text-foreground;
   }
 }
+
+.glassmorphism {
+/* From https://css.glass */
+background: rgba(142, 121, 227, 0.35);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(10.5px);
+-webkit-backdrop-filter: blur(10.5px);
+border: 1px solid rgba(142, 121, 227, 0.39);
+}

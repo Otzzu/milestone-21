@@ -6,8 +6,8 @@ import { Button } from "./ui/button"
 import { ReviewWithUserProps } from "@/types"
 
 interface ReviewBoxProps {
-  handleDelete: (review: ReviewWithUserProps) => void,
-  handleTag: (tag: string) => void,
+  handleDelete?: (review: ReviewWithUserProps) => void,
+  handleTag?: (tag: string) => void,
   data: ReviewWithUserProps[]
 }
 
@@ -17,9 +17,9 @@ const CardList: React.FC<ReviewBoxProps>  = ({
   handleTag
 }) => {
   return (
-    <div className="columns-3 mt-20 space-y-6 gap-6 w-full">
+    <div className="columns-1 md:columns-2 xl:columns-3 mt-20 space-y-6 gap-6 w-full">
       {data.map((item) => (
-        <ReviewCard key={item.id} data={item} handleDelete={() => handleDelete(item)} handleTag={handleTag}/>
+        <ReviewCard key={item.id} data={item} handleDelete={() => handleDelete && handleDelete(item)} handleTag={handleTag}/>
       ))}
     </div>
   )
@@ -36,8 +36,6 @@ const ReviewBox: React.FC<ReviewBoxProps> = ({
   const handleShowMore = () => {
     setPage((prev) => prev + 1)
   }
-
-
 
   return (
     <div className="flex flex-col items-center w-full">

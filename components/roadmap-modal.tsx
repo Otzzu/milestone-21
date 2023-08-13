@@ -14,7 +14,7 @@ const RoadMapModal = () => {
   }
 
   return ( 
-    <Modal title={`Tahun ${data.tahun} semester ${data.semester}`} desc={`Rekomendasi kegiatan untuk tahun ${data.tahun} semester ${data.semester}`} onChange={onChange} open={open} className='max-w-[85%] max-h-[85%] pr-0'>
+    <Modal title={`Tahun ${data.tahun} semester ${data.semester.toLowerCase()}`} desc={`Rekomendasi kegiatan untuk tahun ${data.tahun} semester ${data.semester.toLowerCase()}`} onChange={onChange} open={open} className='max-w-[85%] max-h-[85%] pr-0'>
         <ScrollArea className='w-full h-[500px] pr-6'>
         <div className='w-full h-fit mb-2'>
             <h2 className='font-roboto text-black font-bold text-base'>
@@ -31,7 +31,7 @@ const RoadMapModal = () => {
             </h2>
             <div className='columns-2 space-y-4 gap-4 w-full'>
                 {data.details.map((detail) => (
-                  <DetailsCard key={detail} detail={detail}/>
+                  <DetailsCard key={detail.name} detail={detail}/>
                 ))}
             </div>
         </div>

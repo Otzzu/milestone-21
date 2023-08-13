@@ -1,4 +1,6 @@
+"use client"
 
+import { motion } from "framer-motion"
 
 const StepBox = ({
   number,
@@ -10,10 +12,10 @@ const StepBox = ({
 
   return (
     <div className="flex items-center gap-3 p-6 rounded-sm shadow-lg w-full">
-      <h3 className="font-poppins text-[24px] font-[700] text-[#8053FF]">
+      <h3 className="font-poppins text-[16px] sm:text-[18px] lg:text-[24px] font-[700] text-[#8053FF]">
         {number}
       </h3>
-      <p className="font-poppins text-[18px] font-medium text-[#231558]">
+      <p className="font-poppins text-[12px] sm:text-[14px] lg:text-[18px] font-medium text-[#231558]">
         {text}
       </p>
     </div>
@@ -36,16 +38,29 @@ const Step = () => {
   }]
 
   return (
-    <section className="px-24 py-28">
-        <div className="flex items-center gap-48">
-          <div className="flex-1">
-            <h1 className="font-poppins text-[48px] font-[700] leading-[64px] tracking-[0.96px] text-[#231558]">
+    <section className="px-7 md:px-10 lg:px-24 py-12 lg:py-28">
+        <div className="flex flex-col md:flex-row md:items-center gap-10 sm:gap-20 min-[1100px]:gap-24 lg:gap-48">
+          <motion.div 
+            className="w-[80%] md:w-full"
+            initial={{ opacity: 0, translateX: "-80%" }}
+            whileInView={{ opacity: 1, translateX: 0 }}
+            transition={{ duration: 3, type: "spring", delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <h1 className="font-poppins text-[28px] sm:text-[34px] lg:text-[48px] font-[700] leading-[38px] sm:leading-[44px] lg:leading-[64px] tracking-[0.96px] text-[#231558]">
               Cara Menggunakan RoadMap Akademik Maba
             </h1>
-          </div>
-          <div className="flex flex-col gap-4 flex-1">
-            {stepData.map((data) => (
-              <StepBox key={data.number} number={data.number} text={data.text}/>
+          </motion.div>
+          <div className="flex flex-col gap-4 w-full">
+            {stepData.map((data, index) => (
+              <motion.div
+                initial={{ opacity: 0, translateX: "80%" }}
+                whileInView={{ opacity: 1, translateX: 0 }}
+                transition={{ duration: 2, type: "spring", delay: ((index / 10) * 1.3)}}
+                viewport={{ once: true }}
+              >
+                <StepBox key={data.number} number={data.number} text={data.text}/>
+              </motion.div>
             ))}
           </div>
         </div>

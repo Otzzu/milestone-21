@@ -7,8 +7,10 @@ import { Separator } from "@/components/ui/separator"
 import useAuthModal from "@/hooks/use-auth-modal"
 import useFormModal from "@/hooks/use-form-modal"
 import { Database } from "@/types_db"
+
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react"
 import { useEffect, useState } from "react"
+import { motion } from "framer-motion"
 
 const RoadMapPage = () => {
   const { onOpen, open } = useFormModal()
@@ -38,17 +40,29 @@ const RoadMapPage = () => {
     }
 
     fetchData()
-  }, [open])
+  }, [open, data])
 
   return (
-    <div className="px-24 py-12 ">
-        <div className="flex justify-between mb-10">
+    <div className="px-7 md:px-10 lg:px-24 py-12 ">
+        <div className="flex flex-col md:flex-row justify-between mb-5 md:mb-10 sm:gap-2 md:gap-8">
+          <motion.div
+            className="w-full"
+            initial={{ opacity: 0, translateX: "-80%" }}
+            animate={{ opacity: 1, translateX: 0 }}
+            transition={{ delay: 0.6, type: "spring", duration: 1.5 }}
+          >
             <Header textAlign="left" title="Road Map Generator" desc="Memberikan keterangan apa saja yang harus dilakukan di setiap semester secara detail"/>
-            <div className="pt-4">
-                <Button size="lg" onClick={onClick}>
-                    Survey
-                </Button>
-            </div>
+          </motion.div>
+          <motion.div 
+            className="pt-4"
+            initial={{ opacity: 0, translateX: "80%" }}
+            animate={{ opacity: 1, translateX: 0 }}
+            transition={{ delay: 0.6, type: "spring", duration: 1.5 }}
+          >
+            <Button size="lg" onClick={onClick}>
+              Survey
+            </Button>
+          </motion.div>
         </div>
         <Separator />
         {data?.roadmap_data ? (

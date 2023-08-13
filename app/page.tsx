@@ -4,7 +4,7 @@ import Step from "@/components/step";
 
 export default function HomePage() {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Hero />
       <Step />
       <Review />
