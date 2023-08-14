@@ -48,7 +48,6 @@ const ReviewBox: React.FC<ReviewBoxProps> = ({
         ): (
           <></>
         )}
-        
       </div>
     </div>
   )

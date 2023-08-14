@@ -58,7 +58,7 @@ const DetailsCard = ({
 
   return (
     <div className="rounded-lg flex flex-col p-4 min-[1100px]:p-6 space-y-3 shadow-special2 border break-inside-avoid flex-1" onClick={() => onOpen()}>
-        <AspectRatio className="w-full rounded-lg flex justify-center items-center border" ratio={16 / 8}>
+        <AspectRatio className="relative w-full rounded-lg flex justify-center items-center border" ratio={16 / 8}>
             <Image src={data?.img || "/loading.jpg"} alt="photo" className="object-fill rounded-lg" fill/>
         </AspectRatio>
         <h2 className="font-roboto text-black font-bold text-base md:text-lg">

@@ -52,7 +52,7 @@ const RoadMap = () => {
           <motion.div
             initial={{ opacity: 0, translateX: "-80%" }}
             whileInView={{ opacity: 1, translateX: 0 }}
-            transition={{ delay: 0.8, type: "spring", duration: 1.5 }}
+            transition={{ delay: 0.8, ease: "easeOut", duration: 1.5 }}
             viewport={{ once: true }}
           >
             <RoadmapCard data={roadmapData.tahunPertama.semester1}/>
@@ -60,7 +60,7 @@ const RoadMap = () => {
           <motion.div
             initial={{ opacity: 0, translateX: "80%" }}
             whileInView={{ opacity: 1, translateX: 0 }}
-            transition={{ delay: 0.8, type: "spring", duration: 1.5 }}
+            transition={{ delay: 0.8, ease: "easeOut", duration: 1.5 }}
             viewport={{ once: true }}
 
           >
@@ -83,7 +83,7 @@ const RoadMap = () => {
           <motion.div
             initial={{ opacity: 0, translateX: "-80%" }}
             whileInView={{ opacity: 1, translateX: 0 }}
-            transition={{ delay: 1.2, type: "spring", duration: 1.5 }}
+            transition={{ delay: 1.2, ease: "easeOut", duration: 1.5 }}
             viewport={{ once: true }}
           >
             <RoadmapCard data={roadmapData.tahunKedua.semester1}/>
@@ -91,7 +91,7 @@ const RoadMap = () => {
           <motion.div
             initial={{ opacity: 0, translateX: "80%" }}
             whileInView={{ opacity: 1, translateX: 0 }}
-            transition={{ delay: 1.2, type: "spring", duration: 1.5 }}
+            transition={{ delay: 1.2, ease: "easeOut", duration: 1.5 }}
             viewport={{ once: true }}
           >
             <RoadmapCard data={roadmapData.tahunKedua.semester2}/>

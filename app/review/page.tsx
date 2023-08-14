@@ -79,9 +79,9 @@ const ReviewPage: React.FC<ReviewPageProps> = ({ searchParams }) => {
     const fetctReview = async () => {
       setLoading(true)
       const { data, error } = await supabase
-      .from("review")
-      .select("*, user_id(*)")
-      .order("created_at", { ascending: true })
+        .from("review")
+        .select("*, user_id(*)")
+        .order("created_at", { ascending: true })
   
       if (error) {
         console.log(error)
@@ -98,7 +98,7 @@ const ReviewPage: React.FC<ReviewPageProps> = ({ searchParams }) => {
   return (
     <div className="flex flex-col px-7 md:px-10 lg:px-24 py-12 space-y-16">
         <div className="flex items-center justify-center">
-            <div className="flex flex-col w-full md:w-[80%] space-y-14 items-center justify-center">
+            <div className="flex flex-col w-full md:w-[70%] space-y-14 items-center justify-center">
               <motion.div
                 className="w-full"
                 initial={{ opacity: 0, translateY: "-120%" }}
@@ -108,7 +108,7 @@ const ReviewPage: React.FC<ReviewPageProps> = ({ searchParams }) => {
                 <Header textAlign="center" title="Review" desc="Berisi review-review kating mengenai berbagai macam kegiatan di ITB, baik kepanitian, unit, dan lain sebagainya" />
               </motion.div>
               <motion.div 
-                className="relative w-full sm:w-[90%] md:w-[85%] mr-auto md:mx-auto"
+                className="relative w-full sm:w-[90%] md:w-[80%] mr-auto md:mx-auto"
                 initial={{ opacity: 0, scale: 0.6 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.7, type: "spring", duration: 1.5 }}

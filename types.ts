@@ -8,12 +8,6 @@ export interface ReviewWithUserProps {
     user_id: Database["public"]["Tables"]["users"]["Row"]
 }
 
-// export interface RoadmapDetail {
-//     name: string,
-//     desc: string,
-//     img: string,
-//     tag: string
-// }
 
 export interface RoadmapModalData {
     semester: string,

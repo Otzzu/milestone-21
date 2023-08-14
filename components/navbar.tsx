@@ -18,15 +18,41 @@ import toast from "react-hot-toast"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet"
 import { Separator } from "./ui/separator"
 import { useEffect, useState } from "react"
+import { Database } from "@/types_db"
+import useAddActivityModal from "@/hooks/use-add-activity-modal"
 
 const Navbar = () => {
   const pathName = usePathname()
   const { onOpenSignin, onOpenSignup } = useAuthModal()
   const [openSide, setOpenSide] = useState(false)
   const { onOpen } = useCreateReviewModal()
+  const { onOpen: onOpenActivity } = useAddActivityModal()
   const supabase = useSupabaseClient()
   const user = useUser()
+  const [userDetails, setUserDetails] = useState<Database["public"]["Tables"]["users"]["Row"] | undefined >()
   const router = useRouter()
+
+  useEffect(() => {
+    const fetchData = async () => {
+      
+      const { data, error } = await supabase
+        .from("users")
+        .select("*")
+        .eq("id", user?.id)
+        .single()
+
+      // console.log(data)
+
+      if (error) {
+          console.log(error)
+          toast.error("Fetching user details data failed")
+      } else {
+          setUserDetails(data)
+      }
+    }
+
+    if (user?.id) fetchData()
+  }, [user])
 
   // console.log(user)
 
@@ -41,7 +67,7 @@ const Navbar = () => {
       toast.error("Logout failed")
     } else {
       await supabase.auth.signOut()
-      router.push("/")
+      window.location.assign("/")
     }
   }
 
@@ -57,10 +83,14 @@ const Navbar = () => {
     label: "Review",
     href: "/review",
     active: pathName === "/review"
+  }, {
+    label: "Activity",
+    href: "/activity",
+    active: pathName === "/activity"
   }]
 
   return (
-    <nav className="px-7 md:px-10 lg:px-24 py-6 fixed w-full bg-white bg-opacity-50 backdrop-blur-[9px] z-10">
+    <nav className="px-7 md:px-10 lg:px-24 py-4 md:py-6 fixed w-full bg-white bg-opacity-50 backdrop-blur-[9px] z-10">
         <motion.div 
           initial={{ translateY: "-150%", opacity: 0.4 }}
           animate={{ translateY: "0", opacity: 1 }}
@@ -74,6 +104,13 @@ const Navbar = () => {
                 {pathName === "/review" ? (
                   <Button className="text-xs sm:text-sm" variant="default" onClick={() => onOpen()}>
                     Add Review
+                  </Button>
+                ) : (
+                  <></>
+                )}
+                {(pathName === "/activity" && userDetails?.role === "perwakilan") ? (
+                  <Button className="text-xs sm:text-sm" variant="default" onClick={() => {}}>
+                    Add Activity
                   </Button>
                 ) : (
                   <></>
@@ -148,6 +185,13 @@ const Navbar = () => {
                     {pathName === "/review" ? (
                       <Button variant="default" onClick={() => onOpen()}>
                         Add Review
+                      </Button>
+                    ) : (
+                      <></>
+                    )}
+                    {(pathName === "/activity" && userDetails?.role) === "perwakilan" ? (
+                      <Button variant="default" onClick={() => {}}>
+                        Add Activities
                       </Button>
                     ) : (
                       <></>

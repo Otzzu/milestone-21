@@ -87,7 +87,7 @@ const ActivityPage = ({
                 animate={{ opacity: 1, translateX: 0 }}
                 transition={{ delay: 0.6, type: "spring", duration: 2 }}
             >
-                <AspectRatio className="w-full rounded-lg flex justify-center items-center border" ratio={16 / 8}>
+                <AspectRatio className="w-full rounded-lg flex justify-center items-center border-2" ratio={16 / 8}>
                     <Image src={data?.img || "/loading.jpg"} alt="photo" className="object-fill rounded-lg" fill/>
                 </AspectRatio>
             </motion.div>
