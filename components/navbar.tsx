@@ -17,7 +17,7 @@ import useCreateReviewModal from "@/hooks/use-create-review-modal"
 import toast from "react-hot-toast"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet"
 import { Separator } from "./ui/separator"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const Navbar = () => {
   const pathName = usePathname()
@@ -43,8 +43,6 @@ const Navbar = () => {
       await supabase.auth.signOut()
       router.push("/")
     }
-
-    
   }
 
   const links = [{

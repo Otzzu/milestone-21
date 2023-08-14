@@ -16,7 +16,7 @@ const Review = () => {
             className="flex-1 lg:flex-[1.3]"
             initial={{ opacity: 0, translateX: "-80%" }}
             whileInView={{ opacity: 1, translateX: 0 }}
-            transition={{ duration: 2, type: "spring", delay: 0.5 }}
+            transition={{ duration: 2, type: "spring", delay: 0.4 }}
             viewport={{ once: true }}
         >
             <Image alt="image" src={reviewImg} className="object-contain"/>
@@ -40,7 +40,7 @@ const Review = () => {
                 className="w-full"
                 initial={{ opacity: 0, translateX: "80%" }}
                 whileInView={{ opacity: 1, translateX: 0 }}
-                transition={{ duration: 2, type: "spring", delay: 0.4 }}
+                transition={{ duration: 2, type: "spring", delay: 0.2 }}
                 viewport={{ once: true }}
             >
                 <p className="font-poppins text-[13px] sm:text-[14px] lg:text-[18px] leading-7">
@@ -50,7 +50,7 @@ const Review = () => {
             <motion.div
                 initial={{ opacity: 0, translateX: "60%" }}
                 whileInView={{ opacity: 1, translateX: 0 }}
-                transition={{ duration: 2, type: "spring", delay: 0.8 }}
+                transition={{ duration: 2, type: "spring", delay: 0.4 }}
                 viewport={{ once: true }}
             >
                 <Button size="lg" onClick={() => router.push("/review")}>

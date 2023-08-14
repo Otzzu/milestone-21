@@ -17,7 +17,7 @@ const CardList: React.FC<ReviewBoxProps>  = ({
   handleTag
 }) => {
   return (
-    <div className="columns-1 md:columns-2 xl:columns-3 mt-20 space-y-6 gap-6 w-full">
+    <div className="columns-1 md:columns-2 xl:columns-3 space-y-6 gap-6 w-full">
       {data.map((item) => (
         <ReviewCard key={item.id} data={item} handleDelete={() => handleDelete && handleDelete(item)} handleTag={handleTag}/>
       ))}

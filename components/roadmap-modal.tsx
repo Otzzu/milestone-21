@@ -31,7 +31,7 @@ const RoadMapModal = () => {
             </h2>
             <div className='columns-1 md:columns-2 space-y-4 gap-4 w-full'>
                 {data.details.map((detail) => (
-                  <DetailsCard key={detail.name} detail={detail}/>
+                  <DetailsCard key={detail} detail={detail}/>
                 ))}
             </div>
         </div>

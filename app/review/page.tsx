@@ -96,7 +96,7 @@ const ReviewPage: React.FC<ReviewPageProps> = ({ searchParams }) => {
   }, [openCreate])
   
   return (
-    <div className="flex flex-col px-7 md:px-10 lg:px-24 py-12">
+    <div className="flex flex-col px-7 md:px-10 lg:px-24 py-12 space-y-16">
         <div className="flex items-center justify-center">
             <div className="flex flex-col w-full md:w-[80%] space-y-14 items-center justify-center">
               <motion.div
@@ -132,7 +132,6 @@ const ReviewPage: React.FC<ReviewPageProps> = ({ searchParams }) => {
             </div>
         </div>
         <ReviewBox data={reviews} handleDelete={handleDelete} handleTag={handleTag}/>
-        
     </div>
   )
 }
