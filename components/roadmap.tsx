@@ -82,23 +82,27 @@ const RoadMap = () => {
         <motion.h1 
           className='font-roboto text-black font-extrabold text-lg sm:text-xl md:text-2xl'
           initial={{ opacity: 0, translateX: "-80%" }}
-          animate={{ opacity: 1, translateX: 0 }}
+          whileInView={{ opacity: 1, translateX: 0 }}
           transition={{ delay: 0.6, type: "spring", duration: 1.5 }}
+          viewport={{ once: true }}
         >
           TAHUN PERTAMA
         </motion.h1>
         <div className='flex flex-col md:flex-row justify-center items-center space-y-4 md:space-x-6 md:space-y-0'>
           <motion.div
             initial={{ opacity: 0, translateX: "-80%" }}
-            animate={{ opacity: 1, translateX: 0 }}
+            whileInView={{ opacity: 1, translateX: 0 }}
             transition={{ delay: 0.8, type: "spring", duration: 1.5 }}
+            viewport={{ once: true }}
           >
             <RoadmapCard data={roadmapData.tahunPertama.semester1}/>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, translateX: "80%" }}
-            animate={{ opacity: 1, translateX: 0 }}
+            whileInView={{ opacity: 1, translateX: 0 }}
             transition={{ delay: 0.8, type: "spring", duration: 1.5 }}
+            viewport={{ once: true }}
+
           >
             <RoadmapCard data={roadmapData.tahunPertama.semester2}/>
           </motion.div>
@@ -109,23 +113,26 @@ const RoadMap = () => {
         <motion.h1 
           className='font-roboto text-black font-extrabold text-lg sm:text-xl md:text-2xl'
           initial={{ opacity: 0, translateX: "-80%" }}
-          animate={{ opacity: 1, translateX: 0 }}
+          whileInView={{ opacity: 1, translateX: 0 }}
           transition={{ delay: 1, type: "spring", duration: 1.5 }}
+          viewport={{ once: true }}
         >
           TAHUN KEDUA
         </motion.h1>
         <div className='flex flex-col md:flex-row justify-center items-center space-y-4 md:space-x-6 md:space-y-0'>
           <motion.div
             initial={{ opacity: 0, translateX: "-80%" }}
-            animate={{ opacity: 1, translateX: 0 }}
+            whileInView={{ opacity: 1, translateX: 0 }}
             transition={{ delay: 1.2, type: "spring", duration: 1.5 }}
+            viewport={{ once: true }}
           >
             <RoadmapCard data={roadmapData.tahunKedua.semester1}/>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, translateX: "80%" }}
-            animate={{ opacity: 1, translateX: 0 }}
+            whileInView={{ opacity: 1, translateX: 0 }}
             transition={{ delay: 1.2, type: "spring", duration: 1.5 }}
+            viewport={{ once: true }}
           >
             <RoadmapCard data={roadmapData.tahunKedua.semester2}/>
           </motion.div>
