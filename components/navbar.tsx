@@ -109,7 +109,7 @@ const Navbar = () => {
                   <></>
                 )}
                 {(pathName === "/activity" && userDetails?.role === "perwakilan") ? (
-                  <Button className="text-xs sm:text-sm" variant="default" onClick={() => {}}>
+                  <Button className="text-xs sm:text-sm" variant="default" onClick={() => onOpenActivity()}>
                     Add Activity
                   </Button>
                 ) : (
@@ -190,7 +190,7 @@ const Navbar = () => {
                       <></>
                     )}
                     {(pathName === "/activity" && userDetails?.role) === "perwakilan" ? (
-                      <Button variant="default" onClick={() => {}}>
+                      <Button variant="default" onClick={() => onOpenActivity()}>
                         Add Activities
                       </Button>
                     ) : (

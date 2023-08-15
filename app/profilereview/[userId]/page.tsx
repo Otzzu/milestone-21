@@ -36,11 +36,11 @@ const ProfileReviewPage = async ({
 
 
   return (
-    <div className='flex flex-col px-7 md:px-10 lg:px-24 py-12'>
+    <div className='flex flex-col px-7 space-y-4 md:px-10 lg:px-24 py-12'>
       <ProfileHeaderAnimation title={`${user?.full_name || user?.email} Profile`} desc=""/>
-      <Separator className='my-4'/>
+      <Separator className=''/>
       <ProfileForm user={user} reload={true}/>
-      <Separator className="my-4"/>
+      <Separator className=""/>
       <ReviewHeaderAnimation title={`${user?.full_name || user?.email} Review`} desc={`Semua review yang telah dibuat oleh ${user?.full_name || user?.email}`} delay={2}/>
       <ReviewBox data={reviews as any}/> 
     </div>
