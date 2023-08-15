@@ -106,7 +106,7 @@ const ActivitiesPage = () => {
                     .getPublicUrl(activity.img as string)
                 activity.img = imgUrl.publicUrl
 
-                return <ActivityCard data={activity}/>
+                return <ActivityCard key={activity.id} data={activity}/>
                 })}
         </div>
         <div className="flex justify-center items-center w-full mt-12">
